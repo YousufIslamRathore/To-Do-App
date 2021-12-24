@@ -31,7 +31,7 @@ function addTask() {
         
         var li = document.createElement("li")
         var span = document.createElement("span")
-        var liTxt = document.createTextNode(input.value)
+        var liTxt = document.createTextNode(todoObj.todo)
         span.appendChild(liTxt)
         li.appendChild(span)
         
@@ -53,6 +53,7 @@ function addTask() {
 
         listContainer.appendChild(li)
         input.value = ""
+
     }
     else {
         alert("Empty Task cannot be ADDED !")
@@ -61,6 +62,7 @@ function addTask() {
 
 function deleteAll() {
     listContainer.innerHTML = ""
+    app.database().ref("todos").remove()
 }
 
 function editTask(element) {
